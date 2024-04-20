@@ -1,0 +1,39 @@
+.aside {
+    position: relative;
+    top: 125px;
+    background-color: rgb(50, 50, 50);
+    height: fit-content;
+    min-height: 1000px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.searchTitle {
+    margin-top: 30px;
+    color: rgb(237, 22, 73);
+    font-weight: lighter;
+}
+
+.searchSubTitle {
+    margin-top: 30px;
+    color: rgb(255, 255, 255);
+    font-size: 120%;
+    text-align: center;
+}
+
+.importantInfo {
+    margin-top: 30px;
+    color: rgb(193, 237, 48);
+    font-size: 110%;
+    font-weight: bolder;
+    text-align: center;
+}
+
+
+.botao {
+    font-family:'Times New Roman', Times, serif;
+}

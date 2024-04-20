@@ -1,6 +1,11 @@
 .header {
-    background-color: rgb(158, 158, 158);
-    height: 200px;
+    position:fixed;
+    z-index: 1;
+    top:0px;
+    left:0px;
+    right:0px;
+    background-color: rgb(30, 30, 30);
+    height: 125px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -9,11 +14,8 @@
     align-items: center;
 }
 
-.recepcao {
-    color: rgb(255, 255, 255);
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+.logo {
+    padding: 10px 0px;
+    height:80px;
+    width: fit-content;
 }
