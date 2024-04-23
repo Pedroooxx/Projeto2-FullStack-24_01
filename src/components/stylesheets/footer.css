@@ -1,7 +1,6 @@
 .footer {
     position: relative;
-    bottom: 0px;
-    z-index: 1;
+    top: 125px;
     background-color: rgb(30, 30, 30);
     height: 200px;
     width: 100%;

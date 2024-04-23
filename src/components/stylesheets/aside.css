@@ -26,3 +26,61 @@
     font-weight: bolder;
     text-align: center;
 }
+
+.searchBar {
+    width:100%;
+    height:fit-content;
+}
+
+.characterBox {
+    width:80%;
+    height:fit-content;
+    background-color: rgb(30, 30, 30);
+    border-radius: 20px;
+    margin: 30px 0px;
+    border: 4px solid rgb(237, 48, 83);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content:center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 3px 3px rgba(27, 27, 27, 0.2);
+}
+
+#characterBoxName {
+    margin: 10px 0px;
+}
+
+#characterImage{
+   background-color: rgb(50, 50, 50);
+   height: 100%;
+   width: 80%;
+   max-width: 450px;
+   border: 4px solid rgb(193, 237, 48);
+   border-radius: 20px;
+   object-fit: cover;
+}
+
+#characterTitle{
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+ }
+
+.contentSepare {
+    width:80%;
+    height:fit-content;
+    background-color: rgb(30, 30, 30);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content:center;
+    justify-content: center;
+    align-items: center;
+
+    color:#ad3235;
+}
