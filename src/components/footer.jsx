@@ -3,8 +3,6 @@ import logo from "../images/GOTlogoMono.png";
 
 const Footer = () => {
 
-
-
   return (
     <footer className="footer">
       <img className="logoFoot"  src={logo} alt="ReciclA Logo Monocromático"/>
