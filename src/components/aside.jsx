@@ -5,7 +5,7 @@ import characterImage from "../images/character.png"
 import "./stylesheets/aside.css";
 
 
-const Aside = ({ characterList }) => {
+const Aside = ({ characterList, updateSearchHistory  }) => {
   
   function getCharacter() {
     let input = document.getElementById("inputArea1").value;
@@ -14,7 +14,10 @@ const Aside = ({ characterList }) => {
     if (!isNaN(input) && characterList[input]) {
       fetch(`https://thronesapi.com/api/v2/Characters/${input}`)
         .then((resp) => resp.json())
-        .then((character) => showCharacter(character))
+        .then((character) => {
+          showCharacter(character);
+          updateSearchHistory(character.fullName); // Chamada da função updateSearchHistory
+        })
         .catch((error) => {
           console.error('Erro no fetch:', error);
         });
@@ -25,7 +28,10 @@ const Aside = ({ characterList }) => {
       if (character) {
         fetch(`https://thronesapi.com/api/v2/Characters/${character.id}`)
           .then((resp) => resp.json())
-          .then((character) => showCharacter(character))
+          .then((character) => {
+            showCharacter(character);
+            updateSearchHistory(`${character.id} - ${character.fullName}`); // Chamada da função updateSearchHistory
+          })
           .catch((error) => {
             console.error('Erro no fetch:', error);
           });

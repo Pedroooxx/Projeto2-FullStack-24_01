@@ -7,8 +7,8 @@ const Section = ({ searchHistory }) => {
       <h1 className="titleType2">Histórico de Buscas</h1>
       <div className="historyList">
         {searchHistory.map((search, index) => (
-          <div key={index} className="historyItem">
-            {index} {search}
+          <div className="historyItem">
+            {search}
           </div>
         ))}
       </div>
