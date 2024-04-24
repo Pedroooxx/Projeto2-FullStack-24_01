@@ -30,7 +30,7 @@ const Aside = ({ characterList, updateSearchHistory  }) => {
           .then((resp) => resp.json())
           .then((character) => {
             showCharacter(character);
-            updateSearchHistory(`${character.id} - ${character.fullName}`); // Chamada da função updateSearchHistory
+            updateSearchHistory(`${character.fullName}`); // Chamada da função updateSearchHistory
           })
           .catch((error) => {
             console.error('Erro no fetch:', error);
