@@ -1,13 +1,14 @@
-// App.jsx
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/header";
 import Aside from "./components/aside";
 import Main from "./components/main";
+import Section from "./components/section";
 import Footer from "./components/footer";
 
 function App() {
   const [characterList, setCharacterList] = useState([]);
+  const [searchHistory, setSearchHistory] = useState([]);
 
   useEffect(() => {
     getCharacterList();
@@ -24,11 +25,16 @@ function App() {
       });
   };
 
+  const updateSearchHistory = (searchTerm) => {
+    setSearchHistory((prevHistory) => [searchTerm, ...prevHistory.slice(0, 2)]);
+  };
+
   return (
     <>
       <Header />
-      <Aside characterList={characterList} />
+      <Aside characterList={characterList} updateSearchHistory={updateSearchHistory} />
       <Main characterList={characterList} />
+      <Section searchHistory={searchHistory} />
       <Footer />
     </>
   );
