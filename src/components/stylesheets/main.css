@@ -28,3 +28,15 @@
     align-items: center;
     box-shadow: 3px 3px 3px 3px rgba(27, 27, 27, 0.2);
 }
+
+.evenRow {
+    background-color: rgb(30, 30, 30);
+  }
+  
+  .oddRow {
+    background-color: rgb(40, 40, 40);
+  }
+
+  .whiteText {
+    color: #ffffff;
+  }

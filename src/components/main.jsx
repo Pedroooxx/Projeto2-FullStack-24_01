@@ -1,11 +1,11 @@
-// Main.jsx
-import { Paper, Table, TableCell, TableContainer, TableHead, TablePagination, TableRow, ThemeProvider } from "@mui/material";
-import theme from "./theme";
 import React, { useState, useEffect } from "react";
-
+import { Table, TableContainer, TableHead, TableRow, TableCell, TablePagination, Paper, ThemeProvider } from "@mui/material";
+import { useAppContext } from "../AppContext";
+import theme from "./theme";
 import "./stylesheets/main.css";
 
-const Main = ({ characterList }) => {
+const Main = () => {
+  const { characterList } = useAppContext();
   const [page, setPage] = useState(0);
 
   useEffect(() => {
@@ -28,31 +28,9 @@ const Main = ({ characterList }) => {
     const slicedCharacterList = characterList.slice(startIndex, endIndex);
 
     return slicedCharacterList.map((character, index) => (
-      <TableRow
-        key={index}
-        sx={{
-          backgroundColor: index % 2 === 0 ? theme.palette.background.other : theme.palette.background.default,
-          "&:hover": { backgroundColor: theme.palette.primary.darkest },
-        }}
-      >
-        <TableCell
-          sx={{
-            border: `2px solid ${theme.palette.primary.main}`,
-            color: theme.palette.greenOne.main,
-            fontSize: "120%",
-            fontWeight: "bold"
-          }}
-        >
-          {character.id}
-        </TableCell>
-        <TableCell
-          sx={{
-            border: `2px solid ${theme.palette.primary.main}`,
-            color: theme.palette.secondary.main,
-          }}
-        >
-          {character.fullName}
-        </TableCell>
+      <TableRow key={index} className={index % 2 === 0 ? "evenRow" : "oddRow"}>
+        <TableCell className="whiteText">{character.id}</TableCell>
+        <TableCell className="whiteText">{character.fullName}</TableCell>
       </TableRow>
     ));
   };
@@ -80,7 +58,9 @@ const Main = ({ characterList }) => {
                     ))}
                   </TableRow>
                 </TableHead>
-                {showCharacterList()}
+                <tbody>
+                  {showCharacterList()}
+                </tbody>
               </Table>
             </TableContainer>
           </Paper>

@@ -1,65 +1,18 @@
-// Aside.jsx
+import React from "react";
 import { TextField, Button, ThemeProvider } from '@mui/material';
 import theme from "./theme";
 import characterImage from "../images/character.png"
+import { useAppContext } from "../AppContext";
 import "./stylesheets/aside.css";
 
+const Aside = () => {
+  const { getCharacter } = useAppContext();
 
-const Aside = ({ characterList, updateSearchHistory  }) => {
-  
-  function getCharacter() {
-    let input = document.getElementById("inputArea1").value;
+  const handleGetCharacter = () => {
+    const input = document.getElementById("inputArea1").value;
     document.getElementById("inputArea1").value = "";
-
-    if (!isNaN(input) && characterList[input]) {
-      fetch(`https://thronesapi.com/api/v2/Characters/${input}`)
-        .then((resp) => resp.json())
-        .then((character) => {
-          showCharacter(character);
-          updateSearchHistory(character.fullName); // Chamada da função updateSearchHistory
-        })
-        .catch((error) => {
-          console.error('Erro no fetch:', error);
-        });
-      document.getElementById("inputArea1").placeholder = 'Personagem Encontrado.';
-    } else {
-      const character = characterList.find(({ fullName }) => fullName === input);
-
-      if (character) {
-        fetch(`https://thronesapi.com/api/v2/Characters/${character.id}`)
-          .then((resp) => resp.json())
-          .then((character) => {
-            showCharacter(character);
-            updateSearchHistory(`${character.fullName}`); // Chamada da função updateSearchHistory
-          })
-          .catch((error) => {
-            console.error('Erro no fetch:', error);
-          });
-        document.getElementById("inputArea1").placeholder = 'Personagem Encontrado.';
-      } else {
-        document.getElementById("inputArea1").placeholder = 'Personagem não encontrado.';
-      }
-    }
-  }
-
-  function showCharacter(character) {
-    let characterName = document.getElementById("characterName");
-    characterName.innerHTML = `${character.firstName} ${character.lastName}`;
-
-    let characterTitle = document.getElementById("characterTitle");
-    characterTitle.innerHTML = `${character.title}`;
-
-    let characterFullname = document.getElementById("characterFullname");
-    characterFullname.innerHTML = `${character.fullName}`;
-
-    let characterFamily = document.getElementById("characterFamily");
-    characterFamily.innerHTML = `${character.family}`;
-
-    let characterId = document.getElementById("characterId");
-    characterId.innerHTML = `${character.id}`;
-
-    document.getElementById("characterImage").src = character.imageUrl;
-  }
+    getCharacter(input);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -78,7 +31,7 @@ const Aside = ({ characterList, updateSearchHistory  }) => {
           <Button
             sx={{ my: 2, px: 6, py: 2 }}
             variant="contained"
-            onClick={getCharacter}
+            onClick={handleGetCharacter}
           >
             Enviar
           </Button>
